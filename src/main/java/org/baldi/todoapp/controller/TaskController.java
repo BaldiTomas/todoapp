@@ -1,6 +1,5 @@
 package org.baldi.todoapp.controller;
 
-import org.apache.coyote.Response;
 import org.baldi.todoapp.persistence.entity.Task;
 import org.baldi.todoapp.persistence.entity.TaskStatus;
 import org.baldi.todoapp.service.TaskService;
@@ -30,18 +29,18 @@ public class TaskController {
     }
 
     @GetMapping("/status/{status}")
-    public List<Task> findAllByStatus(@PathVariable("status") TaskStatus status){
+    public List<Task> findAllByStatus(@PathVariable TaskStatus status){
         return this.taskService.findAllByStatus(status);
     }
 
     @PatchMapping("/mark_as_finished/{id}")
-    public ResponseEntity<Void> markAsFinished(@PathVariable("id")Long id) {
+    public ResponseEntity<Void> markAsFinished(@PathVariable Long id) {
         this.taskService.updateTaskFinished(id);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id")Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id){
         this.taskService.deleteById(id);
         return ResponseEntity.noContent().build();
     }

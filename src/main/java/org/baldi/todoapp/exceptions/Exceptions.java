@@ -1,9 +1,12 @@
 package org.baldi.todoapp.exceptions;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import org.springframework.http.HttpStatus;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class Exceptions extends RuntimeException{
 
     private String message;
